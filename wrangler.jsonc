@@ -13,7 +13,7 @@
       "binding": "DB",
       "database_name": "damm-reservations-db",
       // Filled in after `npx wrangler d1 create damm-reservations-db` — see README.
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+      "database_id": "70cea924-00f3-461a-a25a-8c8af95c2905"
     }
   ],
   "vars": {

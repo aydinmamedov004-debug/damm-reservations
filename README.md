@@ -131,6 +131,13 @@ Then open `http://localhost:3000`.
   your code, not exploitable at runtime). Fixing it means jumping to Next 16
   — the OpenNext Cloudflare adapter in use does support 16.2.11+, so this is
   revisitable without re-doing the Cloudflare migration, just not done here.
+- **Known trade-off**: `npm audit` also flags a HIGH advisory in `sharp`'s
+  bundled `libvips` (CVE-2026-33327/33328/35590/35591), pulled in
+  transitively by `next` and by `wrangler`'s local `miniflare` runtime. Low
+  practical risk here — this app has no image-upload/processing endpoint,
+  and nothing in `app/` or `lib/` calls `sharp` directly; it's dev/build
+  tooling only. Worth re-checking with `npm audit` after any future Next or
+  Wrangler upgrade rather than a standalone fix.
 
 ## Toward the 500-bookings goal
 

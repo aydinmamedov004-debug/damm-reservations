@@ -37,6 +37,18 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
       }
     }
   }
+  for (const key of ["category", "name", "description", "currency"] as const) {
+    if (key in patch && patch[key] !== null && patch[key] !== undefined) {
+      const trimmed = String(patch[key]).trim();
+      if ((key === "category" || key === "name") && trimmed.length === 0) {
+        return NextResponse.json({ error: `${key} cannot be empty` }, { status: 400 });
+      }
+      patch[key] = trimmed;
+    }
+  }
+  for (const key of ["available", "featured"] as const) {
+    if (key in patch) patch[key] = Boolean(patch[key]);
+  }
   const updated = await updateMenuItem(id, patch);
   if (!updated) return NextResponse.json({ error: "Menu item not found" }, { status: 404 });
   return NextResponse.json({ item: updated });
