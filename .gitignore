@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+data/db.json
+.env.local
+.dev.vars
+npm-debug.log*
+
+# Cloudflare / OpenNext build output and generated types — regenerate with
+# `npm run cf:typegen`, `npm run cf:preview`, `npm run cf:deploy`.
+.open-next
+.wrangler
+cloudflare-env.d.ts

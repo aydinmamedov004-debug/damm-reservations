@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "damm-reservations",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-08-21",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "damm-reservations-db",
+      // Filled in after `npx wrangler d1 create damm-reservations-db` — see README.
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+    }
+  ],
+  "vars": {
+    // ADMIN_PASSWORD is set as a secret instead (`npx wrangler secret put ADMIN_PASSWORD`),
+    // not committed here — see README.
+  }
+}
